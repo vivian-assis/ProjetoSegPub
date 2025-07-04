@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df = pd.read_csv('https://www.ispdados.rj.gov.br/Arquivos/BaseMunicipioMensal.csv', sep = ';',  encoding= 'latin1')
+municipios_lagos = [
+    'Araruama',
+    'Armação dos Búzios',
+    'Cabo Frio',
+    'Iguaba Grande',
+    'São Pedro da Aldeia',
+    'Saquarema',
+    'Arraial do Cabo'
+]
+
+df_reg = df[df['fmun'].isin(municipios_lagos)]
+df_regagrupados = df_reg.groupby(['fmun'])['cvli'].sum().reset_index()
+df_regagrupados = df_regagrupados.sort_values(by = 'cvli' , ascending=False).reset_index()
+
+df_array_m = np.array(df_regagrupados['cvli'])
+q1 = np.percentile(df_array_m, 25)
+df_men_q1 = df_regagrupados.loc[(df_regagrupados['cvli'] >= q1 )]
+df_men_q1.plot(kind='barh' , x= 'fmun', y= 'cvli')
+plt.xlabel('Municipios com menores taxas de crimes violentos na regiao dos lagos')
+plt.ylabel('Municípios')
+plt.title('Numero de crimes violentos')
+plt.show()
