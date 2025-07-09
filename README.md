@@ -12,10 +12,6 @@ Carlos  Vinícius Oliveira
 Reinaldo  Valadares
 
 
-# ProjetoSegPub 
-Análise de Dados do Instituto de Segurança Pública   
-In: <https://www.ispdados.rj.gov.br/>   
-
 Missão Analítica  
 • Diagnosticar padrões e tendências da criminalidade no estado do RJ.  
 • Responder a questionamentos estratégicos com base em dados históricos.  
